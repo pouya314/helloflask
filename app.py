@@ -1,22 +1,25 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, flash
 import sys
  
 
 app = Flask(__name__)
 
+app.secret_key = 'very-sekret'
+
 
 @app.route("/")
-def homepage():
-    return render_template("hello.html")
+def show_resume_builder():
+    return render_template("resume_builder.html")
  
 
-@app.route("/add_entry", methods=['POST'])
-def add_entry():
+@app.route("/submit_resume", methods=['POST'])
+def submit_resume():
     d = {}
     for key, value in request.form.items():
         d.setdefault((key.split("_")[0] if ("_" in key) else key), []).append(value)
     print(d, file=sys.stdout)
-    return render_template("ok.html")
+    flash('Submission successful')
+    return render_template("resume_submitted.html")
 
 
 def add(first_number, second_number):

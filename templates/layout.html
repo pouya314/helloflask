@@ -1,4 +1,34 @@
-<!doctype html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
-{% block body %}{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+	{% block stylesheets %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	{% endblock %}
+</head>
+
+<body>
+	<div class=page>
+	  <h1>Pouya Arvandian</h1>
+
+	  <!-- top navigation -->
+	  <div class=metanav>
+	    <a href="{{ url_for('show_resume_builder') }}">Resume Builder</a> |
+	    <a href="{{ url_for('show_jquery_example') }}">Ajax Example</a>
+	  </div>
+	  
+	  <!-- flash messages -->
+	  {% for message in get_flashed_messages() %}
+	    <div class=flash>{{ message }}</div>
+	  {% endfor %}
+
+	  <!-- main body content -->
+	  {% block content %}{% endblock %}
+	</div>
+
+	<!-- Javascripts -->
+	{% block javascripts %}{% endblock %}
+</body>
+</html>
