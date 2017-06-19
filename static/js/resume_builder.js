@@ -5,18 +5,12 @@ $(function() {
     }
      
     document.addEventListener('click', function (e) {
-        if (hasClass(e.target, 'add-score-link')) {
-            var last_score_input_element_name = $("#scores input").last().attr("name");
-            var last_idx;
-            if (last_score_input_element_name === undefined) {
-                last_idx = -1                    
-            } else {
-                last_idx = parseInt(last_score_input_element_name.split("_").pop());
-            }
-            $("<input/>", {type: 'text',name: 'score_' + (last_idx+1),value: '500'}).appendTo('#scores');
-            $("<a/>", {text: 'x',class: 'remove-score-link'}).appendTo('#scores');
-            $("<br/>").appendTo('#scores');
-        } else if (hasClass(e.target, 'remove-score-link')) {
+        if (hasClass(e.target, 'add-skill-link')) {
+            var idx = $('#skills').is(':empty') ? -1 : parseInt(last_skill_input_element_name.split("_").pop());
+            $("<input/>", {type: 'text',name: 'skill_' + (idx+1),value: ''}).appendTo('#skills');
+            $("<a/>", {text: 'x',class: 'remove-skill-link'}).appendTo('#skills');
+            $("<br/>").appendTo('#skills');
+        } else if (hasClass(e.target, 'remove-skill-link')) {
             $(e.target).prev().remove();
             $(e.target).next().remove();
             $(e.target).remove();
