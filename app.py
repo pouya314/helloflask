@@ -1,9 +1,8 @@
-from flask import Flask, jsonify, render_template, request, flash
 import sys
+from flask import Flask, jsonify, render_template, request, flash
  
 
 app = Flask(__name__)
-
 app.secret_key = 'very-sekret'
 
 
@@ -38,7 +37,6 @@ def add_numbers():
 @app.route('/show_jquery_example')
 def show_jquery_example():
     return render_template('jquery_example.html')
-
 
 
 if __name__ == "__main__":
