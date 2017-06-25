@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
+{% block stylesheets %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/resume_builder.css') }}">
+{% endblock %}
+
 {% block content %}
     <form action="{{ url_for('submit_resume') }}" method="POST">
         <div id="sections">
@@ -19,8 +24,7 @@
                     <legend>Skills:</legend>
                     <div id="skills">
                         <div class="skill">
-                            <input type="text" name="skill_0">
-                            <a class="remove-skill-link">x</a>
+                            <input type="text" name="skill_0"><a class="remove-skill-link">x</a>
                             <br>
                         </div>
                     </div>
