@@ -34,7 +34,9 @@ $(function() {
     }, false);
 
 
-    // sortable
+    // sortables
     $( "#skills" ).sortable();
     $( "#skills" ).disableSelection();
+    $( "#sections" ).sortable();
+    $( "#sections" ).disableSelection();
 });

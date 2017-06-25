@@ -2,24 +2,34 @@
 
 {% block content %}
     <form action="{{ url_for('submit_resume') }}" method="POST">
-        First name:<br>
-        <input type="text" name="name_0" value=""><br>
+        <div id="sections">
 
-        Last name:<br>
-        <input type="text" name="name_1" value=""><br>
-
-        <fieldset>
-            <legend>Skills:</legend>
-            <div id="skills">
-                <div class="skill">
-                    <input type="text" name="skill_0">
-                    <a class="remove-skill-link">x</a>
-                    <br>
-                </div>
+            <div class="section">
+                First name:<input type="text" name="name_0" value="">
             </div>
-            <a class="add-skill-link" href="#">add skill</a><br>
-        </fieldset>
 
+
+            <div class="section">
+                Last name:<input type="text" name="name_1" value="">
+            </div>
+
+
+            <div class="section">
+                <fieldset>
+                    <legend>Skills:</legend>
+                    <div id="skills">
+                        <div class="skill">
+                            <input type="text" name="skill_0">
+                            <a class="remove-skill-link">x</a>
+                            <br>
+                        </div>
+                    </div>
+                    <a class="add-skill-link" href="#">add skill</a><br>
+                </fieldset>
+            </div>
+
+
+        </div>
         <input type="submit" value="Submit">
     </form>
 {% endblock %}
