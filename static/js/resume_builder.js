@@ -21,4 +21,9 @@ $(function() {
             $(e.target).closest("div.skill").remove();
         }
     }, false);
+
+
+    // sortable
+    $( "#skills" ).sortable();
+    $( "#skills" ).disableSelection();
 });
