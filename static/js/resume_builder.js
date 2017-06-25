@@ -9,8 +9,8 @@ $(function() {
 
     // page js
     document.addEventListener('click', function (e) {
-        e.preventDefault();
         if (hasClass(e.target, 'add-skill-link')) {
+            e.preventDefault();
             var idx;
             if(is_container_empty($("#skills"))){
                 idx = 0;
@@ -29,6 +29,7 @@ $(function() {
             $("<br/>").appendTo(skill_div);
             skill_div.appendTo("#skills");
         } else if (hasClass(e.target, 'remove-skill-link')) {
+            e.preventDefault();
             $(e.target).closest("div.skill").remove();
         }
     }, false);
