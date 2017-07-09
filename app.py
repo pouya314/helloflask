@@ -1,5 +1,9 @@
+import os
 import sys
 from flask import Flask, jsonify, render_template, request, flash
+
+# Add current directory to python search path
+sys.path.append(os.path.join(os.path.dirname(__file__), os.path.pardir))
  
 
 app = Flask(__name__)
