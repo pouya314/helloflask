@@ -1,6 +1,11 @@
 import os
 import sys
+import time
 from flask import Flask, jsonify, render_template, request, flash
+from flask_wtf import FlaskForm
+from wtforms import StringField, TextAreaField
+from wtforms.validators import DataRequired, Length
+
 
 # Add current directory to python search path
 sys.path.append(os.path.join(os.path.dirname(__file__), os.path.pardir))
@@ -8,6 +13,33 @@ sys.path.append(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
 app = Flask(__name__)
 app.secret_key = 'very-sekret'
+
+class ContactForm(FlaskForm):
+    name = StringField('name', validators=[DataRequired(), Length(min=6)])
+    email = StringField('email', validators=[DataRequired()])
+    message = TextAreaField('message', validators=[DataRequired()])
+ 
+ 
+@app.route("/flask-ajax-contact-form")
+def hello():
+    form = ContactForm()
+    return render_template('index.html', form=form)
+ 
+ 
+@app.route("/submit", methods=['POST'])
+def submit():
+    """handle form submission"""
+    form = ContactForm()
+    retval = {}
+   
+    if form.validate_on_submit():
+        retval['result'] = 'success'
+    else:
+        retval['result'] = 'failure'
+        retval['errors'] = form.errors
+   
+    time.sleep(1)
+    return jsonify(retval)
 
 
 @app.route("/")
