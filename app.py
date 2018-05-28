@@ -21,9 +21,9 @@ class ContactForm(FlaskForm):
  
  
 @app.route("/flask-ajax-contact-form")
-def hello():
+def ajax_form():
     form = ContactForm()
-    return render_template('index.html', form=form)
+    return render_template('ajax_form.html', form=form)
  
  
 @app.route("/submit", methods=['POST'])
